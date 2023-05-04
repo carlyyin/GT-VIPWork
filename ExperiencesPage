@@ -1,4 +1,4 @@
-//component part of my Experience page work
+//Page part of my Experience page work
 function ExperiencesComponent(props) {
 
   const { appSection, vrSection } = props;
