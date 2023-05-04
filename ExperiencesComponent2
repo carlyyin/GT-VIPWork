@@ -1,4 +1,4 @@
-mport React from "react";
+Import React from "react";
 
 import Experiences from './ExperiencesComponent';
 
