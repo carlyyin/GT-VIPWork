@@ -1,0 +1,122 @@
+//Incomplete code from when I was following along React.dev
+
+function FilterableProductTable({ productItems }) {
+  const [filterText, setFilterText] = useState('');
+  const [showInStockOnly, setShowInStockOnly] = useState(false);
+
+  return (
+    <div>
+      <SearchBar
+        filterText={filterText}
+        showInStockOnly={showInStockOnly}
+        onFilterTextChange={(text) => setFilterText(text)}
+        onShowInStockChange={(value) => setShowInStockOnly(value)}
+      />
+      <ProductTable
+        productItems={productItems}
+        filterText={filterText}
+        showInStockOnly={showInStockOnly}
+      />
+    </div>
+  );
+}
+
+function ProductCategoryRow({ categoryName }) {
+  return (
+    <tr>
+      <th colSpan="2">
+        {categoryName}
+      </th>
+    </tr>
+  );
+}
+
+function ProductRow({ productItem }) {
+  const productName = productItem.inStock ?
+    productItem.productName :
+    <span style={{ color: 'red' }}>
+      {productItem.productName}
+    </span>;
+
+  return (
+    <tr>
+      <td>{productName}</td>
+      <td>{productItem.price}</td>
+    </tr>
+  );
+}
+
+function ProductTable({ productItems, filterText, showInStockOnly }) {
+  const rows = [];
+  let lastCategory = null;
+
+  productItems.forEach((productItem) => {
+    if (
+      productItem.productName.toLowerCase().indexOf(filterText.toLowerCase()) === -1
+    ) {
+      return;
+    }
+
+    if (showInStockOnly && !productItem.inStock) {
+      return;
+    }
+
+    if (productItem.categoryName !== lastCategory) {
+      rows.push(
+        <ProductCategoryRow
+          categoryName={productItem.categoryName}
+          key={productItem.categoryName}
+        />
+      );
+    }
+
+    rows.push(
+      <ProductRow
+        productItem={productItem}
+        key={productItem.productName}
+      />
+    );
+
+    lastCategory = productItem.categoryName;
+  });
+
+  return (
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>{rows}</tbody>
+    </table>
+  );
+}
+
+function SearchBar({ filterText, showInStockOnly, onFilterTextChange, onShowInStockChange }) {
+  const handleFilterTextChange = (e) => {
+    onFilterTextChange(e.target.value);
+  };
+
+  const handleShowInStockChange = (e) => {
+    onShowInStockChange(e.target.checked);
+  };
+
+  return (
+    <form>
+      <input
+        type="text"
+        placeholder="Search..."
+        value={filterText}
+        onChange={handleFilterTextChange}
+      />
+      <label>
+        <input
+          type="checkbox"
+          checked={showInStockOnly}
+          onChange={handleShowInStockChange}
+        />
+        {' '}
+        Only show products in stock
+      </label>
+
