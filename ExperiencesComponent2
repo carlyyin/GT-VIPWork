@@ -1,0 +1,162 @@
+mport React from "react";
+
+import Experiences from './ExperiencesComponent';
+
+
+
+
+
+const experiencesContainer = {
+
+  display: "flex",
+
+  justifyContent: "center",
+
+  alignItems: "center",
+
+  flexWrap: "wrap",
+
+};
+
+
+
+
+const card = {
+
+  background: "rgba(0, 0, 0, 0)",
+
+  borderRadius: "1%",
+
+  padding: "1%",
+
+  width: "350px",
+
+  height: "450px",
+
+  margin: "20px",
+
+  boxShadow: "0 0 10px 0 rgba(0, 0, 0, 0.1)",
+
+};
+
+
+
+
+const imgContainer = {
+
+  width: "100%",
+
+  height: "70%",
+
+  overflow: "hidden",
+
+};
+
+
+
+
+const img = {
+
+  width: "100%",
+
+  height: "100%",
+
+  objectFit: "cover",
+
+};
+
+
+
+
+const role = {
+
+  fontFamily: "Roboto",
+
+  fontWeight: "100",
+
+  fontSize: "1.5rem",
+
+  color: "#000",
+
+  margin: "1rem 0 0 0",
+
+};
+
+
+
+
+const name = {
+
+  fontFamily: "Roboto",
+
+  fontWeight: "300",
+
+  fontSize: "1.2rem",
+
+  color: "#666",
+
+  margin: "0",
+
+};
+
+
+
+
+function ExperiencesComponent() {
+
+  return (
+
+    <div style={experiencesContainer}>
+
+      <div style={card}>
+
+        <div style={imgContainer}>
+
+          <img style={img} src="https://via.placeholder.com/350x250" alt="Placeholder" />
+
+        </div>
+
+        <h2 style={name}>Placeholder Name</h2>
+
+        <h3 style={role}>Placeholder Role</h3>
+
+      </div>
+
+      <div style={card}>
+
+        <div style={imgContainer}>
+
+          <img style={img} src="https://via.placeholder.com/350x250" alt="Placeholder" />
+
+        </div>
+
+        <h2 style={name}>Placeholder Name</h2>
+
+        <h3 style={role}>Placeholder Role</h3>
+
+      </div>
+
+      <div style={card}>
+
+        <div style={imgContainer}>
+
+          <img style={img} src="https://via.placeholder.com/350x250" alt="Placeholder" />
+
+        </div>
+
+        <h2 style={name}>Placeholder Name</h2>
+
+        <h3 style={role}>Placeholder Role</h3>
+
+      </div>
+
+    </div>
+
+  );
+
+}
+
+
+
+
+export default ExperiencesComponent;
