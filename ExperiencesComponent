@@ -1,0 +1,81 @@
+//component part of my Experience page work
+function ExperiencesComponent(props) {
+
+  const { appSection, vrSection } = props;
+
+
+
+
+  return (
+
+    <div>
+
+      <div style={{ backgroundColor: '#E5E5E5' }}>
+
+        <div className="container">
+
+          <div className="row">
+
+            <div className="col-md-6">{appSection}</div>
+
+            <div className="col-md-6">{vrSection}</div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  );
+
+}
+
+
+
+
+function ExperiencesPage() {
+
+  return (
+
+    <div>
+
+      <ExperiencesComponent
+
+        appSection={
+
+          <section>
+
+            <h2>App</h2>
+
+            <p>Here's where we'll showcase information about our app.</p>
+
+          </section>
+
+        }
+
+        vrSection={
+
+          <section>
+
+            <h2>VR</h2>
+
+            <p>Here's where we'll showcase information about our VR experience.</p>
+
+          </section>
+
+        }
+
+      />
+
+    </div>
+
+  );
+
+}
+
+
+
+
+export default ExperiencesPage;
